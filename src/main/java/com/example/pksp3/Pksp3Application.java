@@ -9,11 +9,10 @@ public class Pksp3Application {
         return new Data((Temp) obs,(C02) obs1);
     }
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
             Sensor sensor = new Sensor();
             Random random = new Random();
 
-            //Observable<Temp> observable = Observable.just(temp);
             Observable.zip(Observable.create(tempEmitter -> {
                 Thread t = new Thread(() -> {
                     int i = 0;
