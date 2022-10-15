@@ -29,7 +29,7 @@ public class Sensor extends Subscriber {
             {
                 System.out.println("ALERT! TEMP HIGH!");
             }
-            else if (c02.getValue() > 75){
+            else if (c02.getValue() > 70){
                 System.out.println("ALERT! C02 HIGH!");
             }
         }

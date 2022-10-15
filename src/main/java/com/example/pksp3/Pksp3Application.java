@@ -20,6 +20,5 @@ public class Pksp3Application {
             Observable<C02> observable1 = Observable.just(c02);
             Observable.zip(observable, observable1, (obs, obs1) -> zipFunc(obs, obs1)).subscribe(sensor);
         }
-	}
-
+    }
 }
