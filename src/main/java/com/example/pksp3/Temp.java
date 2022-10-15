@@ -1,21 +1,15 @@
 package com.example.pksp3;
 
-import rx.Subscriber;
+import lombok.Getter;
+import lombok.Setter;
 
-public class Temp extends Subscriber {
-    @Override
-    public void onCompleted() {
-    }
+@Getter
+@Setter
+public class Temp {
 
-    @Override
-    public void onError(Throwable throwable) {
+    private int value;
 
-    }
-
-    @Override
-    public void onNext(Object o) {
-        if(Integer.parseInt(o.toString()) > 25){
-            System.out.println("ALARM!"+Integer.parseInt(o.toString()));
-        }
+    Temp(int value){
+        this.value = value;
     }
 }

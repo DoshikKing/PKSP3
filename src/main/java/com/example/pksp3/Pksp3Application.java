@@ -1,25 +1,24 @@
 package com.example.pksp3;
 
 import rx.Observable;
-import rx.Subscription;
 
 import java.util.Random;
 
 public class Pksp3Application {
+    static private Data zipFunc(Temp obs, C02 obs1){
+        return new Data(obs, obs1);
+    }
 
 	public static void main(String[] args) throws InterruptedException {
-        Random random = new Random();
-        while(true) {
+        while (true){
+            Sensor sensor = new Sensor();
+            Random random = new Random();
             Thread.sleep(1000);
-            Temp sensor = new Temp();
-            Observable observable = Observable.just(random.nextInt(100));
-            Subscription subscription = observable.subscribe(sensor);
-            subscription.unsubscribe();
-
-            C02 sensor1 = new C02();
-            Observable observable1 = Observable.just(random.nextInt(200));
-            Subscription subscription1 = observable1.subscribe(sensor1);
-            subscription1.unsubscribe();
+            Temp temp = new Temp(random.nextInt(100));
+            C02 c02 = new C02(random.nextInt(100));
+            Observable<Temp> observable = Observable.just(temp);
+            Observable<C02> observable1 = Observable.just(c02);
+            Observable.zip(observable, observable1, (obs, obs1) -> zipFunc(obs, obs1)).subscribe(sensor);
         }
 	}
 
