@@ -1,15 +1,23 @@
 package com.example.pksp3;
 
-import rx.Subscriber;
+import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.disposables.Disposable;
 
-public class Sensor extends Subscriber {
+public class Sensor implements Observer {
+
     @Override
-    public void onCompleted() {
+    public void onError(Throwable throwable) {
 
     }
 
     @Override
-    public void onError(Throwable throwable) {
+    public void onComplete() {
+
+    }
+
+    @Override
+    public void onSubscribe(@NonNull Disposable d) {
 
     }
 

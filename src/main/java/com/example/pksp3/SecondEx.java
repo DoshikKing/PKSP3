@@ -1,6 +1,6 @@
 package com.example.pksp3;
 
-import rx.Observable;
+import io.reactivex.rxjava3.core.Observable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,15 +41,15 @@ public class SecondEx {
 
         System.out.println("1st");
         System.out.println(Arrays.toString(array));
-        Observable<Integer> observable = Observable.from(array).map(SecondEx::square);
+        Observable<Integer> observable = Observable.fromArray(array).map(SecondEx::square);
         List list = new ArrayList();
         observable.subscribe(list::add);
         System.out.println(list);
 
         System.out.println("2nd");
         System.out.println(Arrays.toString(array));
-        Observable<String> observable_string = Observable.from(array1);
-        Observable<Integer> observable_int = Observable.from(array);
+        Observable<String> observable_string = Observable.fromArray(array1);
+        Observable<Integer> observable_int = Observable.fromArray(array);
         Observable<String> observable_string_and_int = Observable.zip(observable_string, observable_int, (a, b) -> zipFunc(a, b));
         List list1 = new ArrayList();
         observable_string_and_int.subscribe(list1::add);
@@ -57,7 +57,7 @@ public class SecondEx {
 
         System.out.println("3nd");
         System.out.println(Arrays.toString(array_10));
-        Observable<Integer> observable1 = Observable.from(array_10).skip(3);
+        Observable<Integer> observable1 = Observable.fromArray(array_10).skip(3);
         List list2 = new ArrayList();
         observable1.subscribe(list2::add);
         System.out.println(list2);
